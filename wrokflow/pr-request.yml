@@ -7,18 +7,20 @@
 name: 'Dependency Review'
 on: 
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 
 jobs:
-  updateAuthor:
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - name: checking out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: extract git commit data
+      - name: git commit data
         uses: rlespinasse/git-commit-data-action@v1.x
 
       - name: Update author information
